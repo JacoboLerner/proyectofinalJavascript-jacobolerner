@@ -2,9 +2,9 @@
 
 
 function medico ( sintoma1, sintoma2, sintoma3){
-    var sintoma1 = prompt ("Ingresar un sintoma");
-    var sintoma2 = prompt ("Ingresar otro sintoma");
-    var sintoma3 = prompt ("Ingresar otro sintoma");
+    var sintoma1 = prompt ("Ingresar un sintoma:");
+    var sintoma2 = prompt ("Ingresar otro sintoma: ");
+    var sintoma3 = prompt ("Ingresar otro sintoma:");
     if ((( sintoma1 == "diarrea")||( sintoma1 == "vomitos")||( sintoma1 == "dolor abdominal")) && (( sintoma2 == "diarrea")||( sintoma2 == "vomitos")||( sintoma2 == "dolor abdominal")) && (( sintoma3 == "diarrea")||( sintoma3 == "vomitos")||( sintoma3 == "dolor abdominal"))){
         alert("Usted esta cursando una gastroenteritis, haga dieta y tome reliveran");
     } 
