@@ -16,72 +16,79 @@ const cuadro3 = new cuadroClinico( "cervicalgia","tomar diclofenac y aplicar cal
 const arraycuadroClinico = [cuadro1, cuadro2, cuadro3];
 
 //se armar tres funciones para el ingreso de sintomas via prompt que discriminan respuesta en blanco
-function solicitarSintoma1(){
-    let sintoma1 = prompt ("Ingresar un sintoma:");
-    while (sintoma1 === ""){
-        sintoma1 = prompt ("Ingresar un sintoma valido:");
-    }
-    return sintoma1;}
+let solicitarSintoma1=()=>{
+    let sintoma1 = document.getElementById("sintoma1");
+    return (sintoma1.value)}
 
-function solicitarSintoma2(){
-        let sintoma2 = prompt ("Ingresar otro sintoma: ");
-        while (sintoma2 === ""){
-            sintoma2 = prompt ("Ingresar un sintoma valido:");
-        }
-        return sintoma2;}
+let solicitarSintoma2=()=>{
+    let sintoma2 = document.getElementById("sintoma2");
+    return (sintoma2.value)}
 
-function solicitarSintoma3(){
-            let sintoma3 = prompt ("Ingresar otro sintoma:");
-            while (sintoma3 === ""){
-                sintoma3 = prompt ("Ingresar un sintoma valido:");
-            }
-            return sintoma3;}
-
-let sintoma1=solicitarSintoma1();
-let sintoma2 =solicitarSintoma2();
-let sintoma3 =solicitarSintoma3();
+let solicitarSintoma3=()=>{
+    let sintoma3 = document.getElementById("sintoma3");
+    return (sintoma3.value)}
 
 //estas funciones de orden superiores aisla el objeto dentro del array que tenga los sintomas referidos, fue complejo armar esto, de manera que esta redactado es imposible que los sintomas se mezclen y para llegar al diagnostico se debe tener el cuadro clinico completo
-const resultadoClinico = arraycuadroClinico.filter((sintoma)=>((sintoma.sintoma1.includes(sintoma1))||(sintoma.sintoma1.includes(sintoma2))||(sintoma.sintoma1.includes(sintoma3))
-)&&((sintoma.sintoma2.includes(sintoma1))||(sintoma.sintoma2.includes(sintoma2))||(sintoma.sintoma2.includes(sintoma3)))&&((sintoma.sintoma3.includes(sintoma1))||(sintoma.sintoma3.includes(sintoma2))||(sintoma.sintoma3.includes(sintoma3))))
+let resultadoClinico1 = () => {
+    const resultadoClinico = arraycuadroClinico.filter((sintoma) => ((sintoma.sintoma1.includes(solicitarSintoma1())) || (sintoma.sintoma1.includes(solicitarSintoma2())) || (sintoma.sintoma1.includes(solicitarSintoma3()))) && ((sintoma.sintoma2.includes(solicitarSintoma1())) || (sintoma.sintoma2.includes(solicitarSintoma2())) || (sintoma.sintoma2.includes(solicitarSintoma3()))) && ((sintoma.sintoma3.includes(solicitarSintoma1())) || (sintoma.sintoma3.includes(solicitarSintoma2())) || (sintoma.sintoma3.includes(solicitarSintoma3()))))
+    return resultadoClinico
+}
 
-//este aisla el nombre del cuadro si es posible el diagnostico
-const resultadoDiagnostico= resultadoClinico.map((el) => el.nombre)
+let nombreDiagnostico=()=>{
+    const resultadoDiagnostico= resultadoClinico1().map((el) => el.nombre)
+    return resultadoDiagnostico
+}
+
 
 //este aisla las pautas de alarma si existe
-const resultadoPautas= resultadoClinico.map((el) => el.pautas)
-
-//mensaje con pautas de alarma y daignostico
-let mensaje = " Usted esta cursando un cuadro de " + resultadoDiagnostico + " las medidas a tomar son " + resultadoPautas
-
-//si se logra tener un array con un diagnostico( es decir un array que tenga un nombre) se da una alerta, en caso contrario se da un mensaje de no diagnostico
-if ((resultadoDiagnostico.some((el) =>(el.nombre == "faringitis"||"gastroenteritis"||"cervicalgia")))){
-    alert (mensaje);
-    console.log(mensaje)
-}else {
-    alert (" No se logro llegar a un diagnostico, acudir a la guardia")
+let pautasDiagnostico=()=>{
+    const resultadoPautas= resultadoClinico1().map((el) => el.pautas)
+    return resultadoPautas
 }
 
+let diagnosticos=[]
 
-//luego se le otorga la oportunidad de aceptar o no la asistencia y a base de eso dar por finalizada la atencion o mandar una queja por mail
-
-function ingresaAcepta(){
-    let aceptar = prompt ("Acepta asistencia virtual?")
-    while (aceptar != "si"){
-        switch (aceptar){
-            case "no":
-                alert (" Mandanos un mail en lo que podemos mejorar.");
-                aceptar = prompt ("Acepta asistencia virtual?")
-                break;
-            default:
-                alert ("Ingrese si o no");               
-                aceptar = prompt ("Acepta asistencia virtual?")
-                break;
-        }
+let mensajeDiagnostico=()=>{
+    let mensaje = " Usted esta cursando un cuadro de " + nombreDiagnostico() + " las medidas a tomar son " + pautasDiagnostico()
+    return mensaje; 
 }
-    if (aceptar == "si"){
-        alert ( "Gracias por usar asistencia virtual")
+
+const generarMensaje = document.querySelector('#generarMensaje');
+const mostrarResultado = document.querySelector('#mostrarResultado');
+
+generarMensaje.addEventListener("click",()=>{
+    mostrarResultado.innerHTML="";
+    let results = document.createElement("div");
+    results.classList.add(`resultado`);
+    results.classList.add(`container`);
+    mostrarResultado.appendChild(results)
+    const resultText = mensaje(); // you need to give the value for a nad b
+    results.textContent = resultText;
+    guardar();
+    }
+    );
+
+
+let mensaje=()=>{
+    if (arraycuadroClinico.some((el) =>(el.nombre == nombreDiagnostico()))){
+        return mensajeDiagnostico();
+    }
+    else {
+        return " No se logro llegar a un diagnostico, acudir a la guardia";
     }
 }
 
-ingresaAcepta();
+function guardar(){
+    localStorage.setItem("diagnostico",JSON.stringify(nombreDiagnostico()));
+}
+
+let guardado= JSON.parse(localStorage.getItem("diagnostico"));
+let ultimoDiagnostico= document.getElementById("ultimo")
+
+if (guardado == "gastroenteritis,faringitis,cervicalgia") {
+    ultimoDiagnostico.remove();
+} else if (guardado === null) {
+    ultimoDiagnostico.remove();
+} else {
+    ultimoDiagnostico.innerText = "Su ultimo diagnostico fue " + guardado;
+}

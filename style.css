@@ -1,0 +1,22 @@
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+#sintomas{
+
+    background-color: skyblue;
+
+}
+.resultado{
+background-color: white;
+border: 2px black solid;
+padding: 5px;
+padding-bottom: 5px;
+}
+
+#ultimo{
+    background-color: white;
+    border: black 2px solid;
+}
