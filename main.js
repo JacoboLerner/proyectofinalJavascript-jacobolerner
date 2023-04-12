@@ -95,7 +95,7 @@ generarMensaje.addEventListener("click", () => {
     results.classList.add(`resultado`);
     results.classList.add(`container`);
     mostrarResultado.appendChild(results);
-    const resultText = mensaje(); // you need to give the value for a nad b
+    const resultText = mensaje(); // 
     results.textContent = resultText;
     guardar();
 });
@@ -125,3 +125,32 @@ if (guardado == "gastroenteritis,faringitis,cervicalgia") {
 else{
     ultimoDiagnostico.innerText = "Su ultimo diagnostico fue " + guardado;
 }
+
+/*fetch("./cuadroClinico.json")
+.then((respuesta)=> respuesta.json())
+.then((datos)=>{
+    console.log(datos)
+})*/
+
+/*const data = fetch ('./cuadroClinico.json')
+            .then((respuesta)=> respuesta.json())
+.then((datos)=>{
+    console.log(datos)
+})
+
+console.log(data);*/
+
+function nombreDeFuncion() {
+    let variableArray;
+    try {
+        const response = fetch("./cuadroClinico.json");
+        variableArray = response.json();
+        console.log(variableArray)
+    } catch (err) {
+        console.log(err);
+    }
+    return variableArray;
+}
+
+const datos=nombreDeFuncion()
+console.log(datos)

@@ -1,0 +1,30 @@
+[
+    {
+        "nombre": "gastroenteritis",
+        "pautas": "hidratarse, tomar agua y tomar antidiarreicos",
+        "sintoma1": "dolor abdominal",
+        "sintoma2": "vomitos",
+        "sintoma3": "diarrea",
+        "id": "1",
+        "imagen":"https://www.bupasalud.com/sites/default/files/styles/640_x_400/public/articulos/2020-12/fotos/gastroenteritis.jpg?itok=j0Fj7HO_"
+    },
+    {
+        "nombre": "faringitis",
+        "pautas": "tomar ibuprofeno y comprimidos de ernex",
+        "sintoma1": "fiebre",
+        "sintoma2": "dolor de garganta",
+        "sintoma3": "congestion nasal",
+        "id": "3",
+        "imagen":"https://statics-cuidateplus.marca.com/cms/styles/ratio_43/azblob/ilustracion-faringitis.jpg.webp?itok=z920YaM6"
+    },
+    {
+        "nombre": "cervicalgia",
+        "pautas": "tomar diclofenac y aplicar calor en la zona",
+        "sintoma1": "dolor de cuello",
+        "sintoma2": "mareos",
+        "sintoma3": "dolor de cabeza",
+        "id": "3",
+        "imagen":"https://alliedhealthed.com/wp-content/uploads/2021/06/Cervical.jpg"
+    }
+]
+
