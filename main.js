@@ -1,13 +1,14 @@
 //se trae el array de cuadro clinicos asi cuando se dispare el evento se logre usar la base de datos
 
-let data =[];
-function cargarData(){
+let data = [];
+
+function cargarData() {
     fetch("./cuadroClinico.json")
-    .then((respuesta)=> respuesta.json())
-    .then((datos)=>{
-        data=datos;
-    })
-    .catch((error)=> console.error(error));
+        .then((respuesta) => respuesta.json())
+        .then((datos) => {
+            data = datos;
+        })
+        .catch((error) => console.error(error));
 }
 cargarData();
 //se armar tres funciones para el ingreso de sintomas via evento click en Ingresar sintomas generando un diagnostico
@@ -60,13 +61,12 @@ let mensajeDiagnostico = () => {
         nombreDiagnostico() +
         " las medidas a tomar son " +
         pautasDiagnostico();
-            Swal.fire({
-                    icon: 'info',
-                    text: mensaje
-                }
-            )
-            return mensaje;
-    };
+    Swal.fire({
+        icon: 'info',
+        text: mensaje
+    })
+    return mensaje;
+};
 
 
 //uso de dom para modificar html para resultados
@@ -74,27 +74,27 @@ const generarMensaje = document.querySelector("#generarMensaje");
 const mostrarResultado = document.querySelector("#mostrarResultado");
 
 generarMensaje.addEventListener("click", () => {
-    mostrarResultado.innerHTML ="";
+    mostrarResultado.innerHTML = "";
     let results = document.createElement("div");
     results.classList.add(`resultado`);
     results.classList.add(`container`);
     mostrarResultado.appendChild(results)
-    const resultText = mensaje(); 
+    const resultText = mensaje();
     results.textContent = resultText;
     guardar();
 });
 
 let mensaje = () => {
-        if (data.some((el) => el.nombre == nombreDiagnostico())) {
-            return mensajeDiagnostico();
-        } else { Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: " No se logro llegar a un diagnostico, acudir a la guardia",
-                        }       
-                    )
-            return " No se logro llegar a un diagnostico, acudir a la guardia";
-        }
+    if (data.some((el) => el.nombre == nombreDiagnostico())) {
+        return mensajeDiagnostico();
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: " No se logro llegar a un diagnostico, acudir a la guardia",
+        })
+        return " No se logro llegar a un diagnostico, acudir a la guardia";
+    }
 };
 //se usa el local storage para guardar el ultimo diagnostico si asi fuese posible, y el proximo refresh le mostrara el ultimo cuadro clinico
 function guardar() {
@@ -108,9 +108,8 @@ if (guardado == "gastroenteritis,faringitis,cervicalgia,sindrome gripal,colecist
     ultimoDiagnostico.remove();
 } else if (guardado === null) {
     ultimoDiagnostico.remove();
-}else if( guardado.length===0){
+} else if (guardado.length === 0) {
     ultimoDiagnostico.remove();
-}
-else{
+} else {
     ultimoDiagnostico.innerText = "Su ultimo diagnostico fue " + guardado;
 }
