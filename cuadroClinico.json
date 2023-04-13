@@ -23,8 +23,7 @@
         "sintoma1": "dolor de cuello",
         "sintoma2": "mareos",
         "sintoma3": "dolor de cabeza",
-        "id": "3",
-        "imagen":"https://alliedhealthed.com/wp-content/uploads/2021/06/Cervical.jpg"
+        "id": "3"
     },
     {
         "nombre": "sindrome gripal",
@@ -32,8 +31,7 @@
         "sintoma1": "fiebre",
         "sintoma2": "congestion nasal",
         "sintoma3": "dolor de cabeza",
-        "id": "4",
-        "imagen":"https://alliedhealthed.com/wp-content/uploads/2021/06/Cervical.jpg"
+        "id": "4"
     },
     {
         "nombre": "colecistitis",
@@ -41,8 +39,7 @@
         "sintoma1": "dolor abdominal por debajo de costilla derecha",
         "sintoma2": "fiebre",
         "sintoma3": "nauseas",
-        "id": "5",
-        "imagen":"https://alliedhealthed.com/wp-content/uploads/2021/06/Cervical.jpg"
+        "id": "5"
     },
     {
         "nombre": "infeccion urinaria",
@@ -50,8 +47,7 @@
         "sintoma1": "dolor al orinar",
         "sintoma2": "necesidad de orinar de forma frecuente",
         "sintoma3": "fiebre",
-        "id": "6",
-        "imagen":"https://alliedhealthed.com/wp-content/uploads/2021/06/Cervical.jpg"
+        "id": "6"
     },
     {
         "nombre": "gastroenteritis",
@@ -59,8 +55,7 @@
         "sintoma1": "dolor abdominal",
         "sintoma2": "nauseas",
         "sintoma3": "diarrea",
-        "id": "7",
-        "imagen":"https://www.bupasalud.com/sites/default/files/styles/640_x_400/public/articulos/2020-12/fotos/gastroenteritis.jpg?itok=j0Fj7HO_"
+        "id": "7"
     }
 ]
 

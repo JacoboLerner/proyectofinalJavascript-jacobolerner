@@ -41,7 +41,7 @@ let resultadoClinico1 = () => {
     );
     return resultadoClinico;
 };
-//se aisla nombre
+//se aisla nombre si existe 
 let nombreDiagnostico = () => {
     const resultadoDiagnostico = resultadoClinico1().map((el) => el.nombre);
     return resultadoDiagnostico;
@@ -69,11 +69,9 @@ let mensajeDiagnostico = () => {
     };
 
 
-//uso de dom para modificar html
+//uso de dom para modificar html para resultados
 const generarMensaje = document.querySelector("#generarMensaje");
 const mostrarResultado = document.querySelector("#mostrarResultado");
-
-
 
 generarMensaje.addEventListener("click", () => {
     mostrarResultado.innerHTML ="";
@@ -116,9 +114,3 @@ if (guardado == "gastroenteritis,faringitis,cervicalgia,sindrome gripal,colecist
 else{
     ultimoDiagnostico.innerText = "Su ultimo diagnostico fue " + guardado;
 }
-
-/*fetch("./cuadroClinico.json")
-.then((respuesta)=> respuesta.json())
-.then((datos)=>{
-    console.log(datos)
-})*/
