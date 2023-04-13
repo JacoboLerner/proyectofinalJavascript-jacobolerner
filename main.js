@@ -1,6 +1,15 @@
 //se trae el array de cuadro clinicos asi cuando se dispare el evento se logre usar la base de datos
-import data from './cuadroClinico.json' assert { type: "json" };
 
+let data =[];
+function cargarData(){
+    fetch("./cuadroClinico.json")
+    .then((respuesta)=> respuesta.json())
+    .then((datos)=>{
+        data=datos;
+    })
+    .catch((error)=> console.error(error));
+}
+cargarData();
 //se armar tres funciones para el ingreso de sintomas via evento click en Ingresar sintomas generando un diagnostico
 let solicitarSintoma1 = () => {
     let sintoma1 = document.getElementById("sintoma1");
@@ -16,7 +25,6 @@ let solicitarSintoma3 = () => {
     let sintoma3 = document.getElementById("sintoma3");
     return sintoma3.value;
 };
-
 //estas funciones de orden superiores aisla el objeto dentro del array que tenga los sintomas referidos, fue complejo armar esto, de manera que esta redactado es imposible que los sintomas se mezclen y para llegar al diagnostico se debe tener el cuadro clinico completo
 let resultadoClinico1 = () => {
     const resultadoClinico = data.filter(
@@ -65,8 +73,10 @@ let mensajeDiagnostico = () => {
 const generarMensaje = document.querySelector("#generarMensaje");
 const mostrarResultado = document.querySelector("#mostrarResultado");
 
+
+
 generarMensaje.addEventListener("click", () => {
-    mostrarResultado.innerHTML = "";
+    mostrarResultado.innerHTML ="";
     let results = document.createElement("div");
     results.classList.add(`resultado`);
     results.classList.add(`container`);
@@ -79,7 +89,7 @@ generarMensaje.addEventListener("click", () => {
 let mensaje = () => {
         if (data.some((el) => el.nombre == nombreDiagnostico())) {
             return mensajeDiagnostico();
-        } else {    Swal.fire({
+        } else { Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
                         text: " No se logro llegar a un diagnostico, acudir a la guardia",
@@ -96,7 +106,7 @@ function guardar() {
 let guardado = JSON.parse(localStorage.getItem("diagnostico"));
 let ultimoDiagnostico = document.getElementById("ultimo");
 
-if (guardado == "gastroenteritis,faringitis,cervicalgia,colecistitis,sindrome gripal,infeccion urinaria") {
+if (guardado == "gastroenteritis,faringitis,cervicalgia,sindrome gripal,colecistitis,infeccion urinaria,gastroenteritis") {
     ultimoDiagnostico.remove();
 } else if (guardado === null) {
     ultimoDiagnostico.remove();

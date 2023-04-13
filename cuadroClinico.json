@@ -52,6 +52,15 @@
         "sintoma3": "fiebre",
         "id": "6",
         "imagen":"https://alliedhealthed.com/wp-content/uploads/2021/06/Cervical.jpg"
+    },
+    {
+        "nombre": "gastroenteritis",
+        "pautas": "hidratarse, tomar agua y tomar antidiarreicos",
+        "sintoma1": "dolor abdominal",
+        "sintoma2": "nauseas",
+        "sintoma3": "diarrea",
+        "id": "7",
+        "imagen":"https://www.bupasalud.com/sites/default/files/styles/640_x_400/public/articulos/2020-12/fotos/gastroenteritis.jpg?itok=j0Fj7HO_"
     }
 ]
 
