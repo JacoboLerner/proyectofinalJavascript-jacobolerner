@@ -1,36 +1,5 @@
-//se declara clase para poder construir objetos, incluyen sintomas, nombre de patologia y pautas a tomar con diagnostico de dicha patologia.
-class cuadroClinico {
-    constructor(nombre, pautas, sintoma1, sintoma2, sintoma3) {
-        this.nombre = nombre;
-        this.pautas = pautas;
-        this.sintoma1 = sintoma1;
-        this.sintoma2 = sintoma2;
-        this.sintoma3 = sintoma3;
-    }
-}
-const cuadro1 = new cuadroClinico(
-    "gastroenteritis",
-    "hidratarse, tomar agua y tomar antidiarreicos",
-    "dolor abdominal",
-    "vomitos",
-    "diarrea"
-);
-const cuadro2 = new cuadroClinico(
-    "faringitis",
-    "tomar ibuprofeno y comprimidos de ernex",
-    "fiebre",
-    "dolor de garganta",
-    "congestion nasal"
-);
-const cuadro3 = new cuadroClinico(
-    "cervicalgia",
-    "tomar diclofenac y aplicar calor en la zona",
-    "dolor de cuello",
-    "mareos",
-    "dolor de cabeza"
-);
-//se construye array a base de cuadros clinicos, se puede agregar cuadros de forma mas rapida y eficaz que primer entrega
-const arraycuadroClinico = [cuadro1, cuadro2, cuadro3];
+//se trae el array de cuadro clinicos asi cuando se dispare el evento se logre usar la base de datos
+import data from './cuadroClinico.json' assert { type: "json" };
 
 //se armar tres funciones para el ingreso de sintomas via evento click en Ingresar sintomas generando un diagnostico
 let solicitarSintoma1 = () => {
@@ -50,7 +19,7 @@ let solicitarSintoma3 = () => {
 
 //estas funciones de orden superiores aisla el objeto dentro del array que tenga los sintomas referidos, fue complejo armar esto, de manera que esta redactado es imposible que los sintomas se mezclen y para llegar al diagnostico se debe tener el cuadro clinico completo
 let resultadoClinico1 = () => {
-    const resultadoClinico = arraycuadroClinico.filter(
+    const resultadoClinico = data.filter(
         (sintoma) =>
         (sintoma.sintoma1.includes(solicitarSintoma1()) ||
             sintoma.sintoma1.includes(solicitarSintoma2()) ||
@@ -83,8 +52,15 @@ let mensajeDiagnostico = () => {
         nombreDiagnostico() +
         " las medidas a tomar son " +
         pautasDiagnostico();
-    return mensaje;
-};
+            Swal.fire({
+                    icon: 'info',
+                    text: mensaje
+                }
+            )
+            return mensaje;
+    };
+
+
 //uso de dom para modificar html
 const generarMensaje = document.querySelector("#generarMensaje");
 const mostrarResultado = document.querySelector("#mostrarResultado");
@@ -94,18 +70,23 @@ generarMensaje.addEventListener("click", () => {
     let results = document.createElement("div");
     results.classList.add(`resultado`);
     results.classList.add(`container`);
-    mostrarResultado.appendChild(results);
-    const resultText = mensaje(); // 
+    mostrarResultado.appendChild(results)
+    const resultText = mensaje(); 
     results.textContent = resultText;
     guardar();
 });
 
 let mensaje = () => {
-    if (arraycuadroClinico.some((el) => el.nombre == nombreDiagnostico())) {
-        return mensajeDiagnostico();
-    } else {
-        return " No se logro llegar a un diagnostico, acudir a la guardia";
-    }
+        if (data.some((el) => el.nombre == nombreDiagnostico())) {
+            return mensajeDiagnostico();
+        } else {    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: " No se logro llegar a un diagnostico, acudir a la guardia",
+                        }       
+                    )
+            return " No se logro llegar a un diagnostico, acudir a la guardia";
+        }
 };
 //se usa el local storage para guardar el ultimo diagnostico si asi fuese posible, y el proximo refresh le mostrara el ultimo cuadro clinico
 function guardar() {
@@ -115,7 +96,7 @@ function guardar() {
 let guardado = JSON.parse(localStorage.getItem("diagnostico"));
 let ultimoDiagnostico = document.getElementById("ultimo");
 
-if (guardado == "gastroenteritis,faringitis,cervicalgia") {
+if (guardado == "gastroenteritis,faringitis,cervicalgia,colecistitis,sindrome gripal,infeccion urinaria") {
     ultimoDiagnostico.remove();
 } else if (guardado === null) {
     ultimoDiagnostico.remove();
@@ -131,26 +112,3 @@ else{
 .then((datos)=>{
     console.log(datos)
 })*/
-
-/*const data = fetch ('./cuadroClinico.json')
-            .then((respuesta)=> respuesta.json())
-.then((datos)=>{
-    console.log(datos)
-})
-
-console.log(data);*/
-
-function nombreDeFuncion() {
-    let variableArray;
-    try {
-        const response = fetch("./cuadroClinico.json");
-        variableArray = response.json();
-        console.log(variableArray)
-    } catch (err) {
-        console.log(err);
-    }
-    return variableArray;
-}
-
-const datos=nombreDeFuncion()
-console.log(datos)

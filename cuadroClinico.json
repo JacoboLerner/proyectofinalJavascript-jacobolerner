@@ -14,7 +14,7 @@
         "sintoma1": "fiebre",
         "sintoma2": "dolor de garganta",
         "sintoma3": "congestion nasal",
-        "id": "3",
+        "id": "2",
         "imagen":"https://statics-cuidateplus.marca.com/cms/styles/ratio_43/azblob/ilustracion-faringitis.jpg.webp?itok=z920YaM6"
     },
     {
@@ -24,6 +24,33 @@
         "sintoma2": "mareos",
         "sintoma3": "dolor de cabeza",
         "id": "3",
+        "imagen":"https://alliedhealthed.com/wp-content/uploads/2021/06/Cervical.jpg"
+    },
+    {
+        "nombre": "sindrome gripal",
+        "pautas": "tomar paracetamol, reposo y dieta blanda",
+        "sintoma1": "fiebre",
+        "sintoma2": "congestion nasal",
+        "sintoma3": "dolor de cabeza",
+        "id": "4",
+        "imagen":"https://alliedhealthed.com/wp-content/uploads/2021/06/Cervical.jpg"
+    },
+    {
+        "nombre": "colecistitis",
+        "pautas": "tomar buscapina y acudir a guardia mas cercana para realizacion de ecografia",
+        "sintoma1": "dolor abdominal por debajo de costilla derecha",
+        "sintoma2": "fiebre",
+        "sintoma3": "nauseas",
+        "id": "5",
+        "imagen":"https://alliedhealthed.com/wp-content/uploads/2021/06/Cervical.jpg"
+    },
+    {
+        "nombre": "infeccion urinaria",
+        "pautas": "acudir a guardia para entrega de antibioticos, reposo e hidratacion.",
+        "sintoma1": "dolor al orinar",
+        "sintoma2": "necesidad de orinar de forma frecuente",
+        "sintoma3": "fiebre",
+        "id": "6",
         "imagen":"https://alliedhealthed.com/wp-content/uploads/2021/06/Cervical.jpg"
     }
 ]

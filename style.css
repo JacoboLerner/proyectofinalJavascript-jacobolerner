@@ -20,3 +20,8 @@ padding-bottom: 5px;
     background-color: white;
     border: black 2px solid;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+}
