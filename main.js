@@ -112,4 +112,5 @@ if (guardado == "gastroenteritis,faringitis,cervicalgia,sindrome gripal,colecist
     ultimoDiagnostico.remove();
 } else {
     ultimoDiagnostico.innerText = "Su ultimo diagnostico fue " + guardado;
+    ultimoDiagnostico.classList.add(`mt-3`);
 }

@@ -1,12 +1,11 @@
 [
     {
         "nombre": "gastroenteritis",
-        "pautas": "hidratarse, tomar agua y tomar antidiarreicos",
+        "pautas": "hidratarse, hacer dieta astringente y tomar antidiarreicos",
         "sintoma1": "dolor abdominal",
         "sintoma2": "vomitos",
         "sintoma3": "diarrea",
-        "id": "1",
-        "imagen":"https://www.bupasalud.com/sites/default/files/styles/640_x_400/public/articulos/2020-12/fotos/gastroenteritis.jpg?itok=j0Fj7HO_"
+        "id": "1"
     },
     {
         "nombre": "faringitis",
@@ -14,8 +13,7 @@
         "sintoma1": "fiebre",
         "sintoma2": "dolor de garganta",
         "sintoma3": "congestion nasal",
-        "id": "2",
-        "imagen":"https://statics-cuidateplus.marca.com/cms/styles/ratio_43/azblob/ilustracion-faringitis.jpg.webp?itok=z920YaM6"
+        "id": "2"
     },
     {
         "nombre": "cervicalgia",
@@ -35,7 +33,7 @@
     },
     {
         "nombre": "colecistitis",
-        "pautas": "tomar buscapina y acudir a guardia mas cercana para realizacion de ecografia",
+        "pautas": "tomar un comprimido de buscapina y acudir a guardia mas cercana para realizacion de ecografia",
         "sintoma1": "dolor abdominal por debajo de costilla derecha",
         "sintoma2": "fiebre",
         "sintoma3": "nauseas",
@@ -44,14 +42,14 @@
     {
         "nombre": "infeccion urinaria",
         "pautas": "acudir a guardia para entrega de antibioticos, reposo e hidratacion.",
-        "sintoma1": "dolor al orinar",
+        "sintoma1": "dolor/ardor al orinar",
         "sintoma2": "necesidad de orinar de forma frecuente",
         "sintoma3": "fiebre",
         "id": "6"
     },
     {
         "nombre": "gastroenteritis",
-        "pautas": "hidratarse, tomar agua y tomar antidiarreicos",
+        "pautas": "hidratarse,hacer dieta astringente y tomar antidiarreicos",
         "sintoma1": "dolor abdominal",
         "sintoma2": "nauseas",
         "sintoma3": "diarrea",
